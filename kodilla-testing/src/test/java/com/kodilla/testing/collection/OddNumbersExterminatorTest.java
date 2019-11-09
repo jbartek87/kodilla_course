@@ -20,14 +20,18 @@ public class OddNumbersExterminatorTest {
 
     @Test
     public void testOddNumbersExterminatorEmptyList() {
+        //Given
         OddNumbersExterminator emptyList = new OddNumbersExterminator();
         ArrayList<Integer> testingNumb = new ArrayList<>();
+        //When
         ArrayList<Integer> result = emptyList.exterminate(testingNumb);
+        //Then
         Assert.assertEquals(0, result.size());
     }
 
     @Test
     public void testOddNumbersExterminatorNormalList() {
+        //Given
         OddNumbersExterminator fullList = new OddNumbersExterminator();
         ArrayList<Integer> lotOfnumbers = new ArrayList<>();
         lotOfnumbers.add(1);
@@ -43,8 +47,9 @@ public class OddNumbersExterminatorTest {
         expectedList.add(4);
         expectedList.add(6);
         expectedList.add(8);
+        //When
         ArrayList<Integer> result = fullList.exterminate(lotOfnumbers);
+        //Then
         Assert.assertEquals(expectedList, result);
-
     }
 }
