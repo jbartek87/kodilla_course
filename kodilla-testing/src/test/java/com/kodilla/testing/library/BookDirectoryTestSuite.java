@@ -86,16 +86,19 @@ public class BookDirectoryTestSuite {
         assertEquals(0, theListOfBooks10.size());
         verify(libraryDatabaseMock, times(0)).listBooksWithCondition(anyString());
     }
+
     @Test
     public void testListOfZeroHandedBooks(){
         //Given
         LibraryDatabase libraryDatabase = mock(LibraryDatabase.class);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabase);
         LibraryUser libraryUser = new LibraryUser("Zenek", "Kowalski", "212312");
+        List<Book> handedBooks = new ArrayList<Book>();
 
+        when(bookLibrary.listBooksInHandsOf(libraryUser)).thenReturn(handedBooks);
 
         //When
-        List<Book> bookListTest = bookLibrary.listOfBooksInHandsOf(libraryUser);
+        List<Book> bookListTest = bookLibrary.listBooksInHandsOf(libraryUser);
 
         //Then
         assertEquals(0, bookListTest.size());
@@ -107,11 +110,13 @@ public class BookDirectoryTestSuite {
         LibraryDatabase libraryDatabase = mock(LibraryDatabase.class);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabase);
         LibraryUser libraryUser = new LibraryUser("Zenek", "Kowalski", "212312");
+        List<Book> handedBooks = new ArrayList<Book>();
         Book book1 = new Book("W pustyni i w puszczy", "Kowalski", 1922);
-        bookLibrary.handedBooks.add(book1);
+        handedBooks.add(book1);
+        when(bookLibrary.listBooksInHandsOf(libraryUser)).thenReturn(handedBooks);
 
         //When
-        List<Book> bookListTest = bookLibrary.listOfBooksInHandsOf(libraryUser);
+        List<Book> bookListTest = bookLibrary.listBooksInHandsOf(libraryUser);
 
         //Then
         assertEquals(1, bookListTest.size());
@@ -123,24 +128,27 @@ public class BookDirectoryTestSuite {
         LibraryDatabase libraryDatabase = mock(LibraryDatabase.class);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabase);
         LibraryUser libraryUser = new LibraryUser("Zenek", "Kowalski", "212312");
+        List<Book> handedBooks = new ArrayList<Book>();
         Book book1 = new Book("W pustyni i w puszczy", "Kowalski", 1922);
-        Book book2 = new Book("John Wick", "Nowak", 2012);
-        Book book3 = new Book("Matrix", "Wachowski", 1912);
-        Book book4 = new Book("Kajko i Kokosz", "Matryniuk", 2001);
-        Book book5 = new Book("Ona i on", "Matejko", 2025);
-        bookLibrary.handedBooks.add(book1);
-        bookLibrary.handedBooks.add(book2);
-        bookLibrary.handedBooks.add(book3);
-        bookLibrary.handedBooks.add(book4);
-        bookLibrary.handedBooks.add(book5);
+        Book book2 = new Book("Siedem", "Kowalski", 2520);
+        Book book3 = new Book("Matrix", "Kowalski", 1999);
+        Book book4 = new Book("Pan i Pani", "Kowalski", 2002);
+        Book book5 = new Book("Wojna Domowa", "Kowalski", 1918);
+        handedBooks.add(book1);
+        handedBooks.add(book2);
+        handedBooks.add(book3);
+        handedBooks.add(book4);
+        handedBooks.add(book5);
+        when(bookLibrary.listBooksInHandsOf(libraryUser)).thenReturn(handedBooks);
 
         //When
-        List<Book> bookListTest = bookLibrary.listOfBooksInHandsOf(libraryUser);
+        List<Book> bookListTest = bookLibrary.listBooksInHandsOf(libraryUser);
 
         //Then
         assertEquals(5, bookListTest.size());
 
     }
+
 
 
 

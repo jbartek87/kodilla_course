@@ -5,7 +5,8 @@ import java.util.List;
 
 public class BookLibrary {
     LibraryDatabase libraryDatabase;
-    List<Book> handedBooks = new ArrayList<Book>();
+
+
 
     public BookLibrary(LibraryDatabase libraryDatabase) {
         this.libraryDatabase = libraryDatabase;
@@ -20,11 +21,7 @@ public class BookLibrary {
         return bookList;
     }
 
-    public List<Book> listOfBooksInHandsOf(LibraryUser libraryUser){
-        return handedBooks;
-    }
-
-    public List<Book> getHandedBooks() {
-        return handedBooks;
+    public List<Book> listBooksInHandsOf(LibraryUser libraryUser) {
+        return libraryDatabase.listBooksInHandsOf(libraryUser);
     }
 }
