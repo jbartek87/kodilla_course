@@ -24,6 +24,5 @@ public class StreamMain {
         poemBeautifier.beautifyToUpperCase("tata major", text2 -> text2);
         poemBeautifier.beautifyToLowerCase("Papier z Domu", text2 -> text2);
         poemBeautifier.beautifyStars("Bierzesz ufo, skończysz krucho", text2 -> text2);
-
     }
 }
