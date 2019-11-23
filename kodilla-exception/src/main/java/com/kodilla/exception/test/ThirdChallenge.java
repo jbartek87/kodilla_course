@@ -5,6 +5,10 @@ public class ThirdChallenge {
         Flight parisLondon = new Flight("Warsaw", "London");
         FlightFinder flightFinder = new FlightFinder();
         flightFinder.myFlight.put("Paris", true);
+        flightFinder.myFlight.put("Berlin", true);
+        flightFinder.myFlight.put("New York", true);
+        flightFinder.myFlight.put("Chicago", true);
+
 
         try{
             flightFinder.findFlight(parisLondon);
