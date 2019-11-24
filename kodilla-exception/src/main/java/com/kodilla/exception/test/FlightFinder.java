@@ -9,21 +9,17 @@ public class FlightFinder {
         this.myFlight = myFlight;
         myFlight.put("Paris-London", true);
         myFlight.put("Warsaw-London", true);
-        myFlight.put("Moscow-Dubai", true);
+        myFlight.put("Moscow-Dubai", false);
     }
 
-    public boolean findFlight(Flight flight) throws RouteNotFoundException {
+    public void findFlight(Flight flight) throws RouteNotFoundException {
 
-        if (myFlight.containsKey(flight.getDepartureAirport() + "-" + flight.getArrivalAirport())) {
-            System.out.println("Flight from " + flight.getDepartureAirport() + " to "
-                    + flight.getArrivalAirport() + " is available");
-            return myFlight.get(flight.getDepartureAirport() + "-" + flight.getArrivalAirport());
-            } else {
-            System.out.println("Flight from " + flight.getDepartureAirport() + " to "
-                    + flight.getArrivalAirport() + " is not available !!!");
+        if (myFlight.containsKey(flight.getDepartureAirport() + "-" + flight.getArrivalAirport())
+                && myFlight.get(flight.getDepartureAirport() + "-" + flight.getArrivalAirport())) {
+            System.out.println(myFlight.get(flight.getDepartureAirport() + "-" + flight.getArrivalAirport()));
+        } else {
                 throw new RouteNotFoundException("Something went wrong");
             }
-
-        }
+    }
 
 }
