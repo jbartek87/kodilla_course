@@ -8,7 +8,7 @@ public class ThirdChallenge {
         FlightFinder flightFinder = new FlightFinder(new HashMap<>());
 
         try{
-            flightFinder.findFlight(moscowParis);
+            System.out.println(flightFinder.findFlight(moscowParis));
         } catch (RouteNotFoundException e) {
             System.out.println("There is no such flight");
         }
