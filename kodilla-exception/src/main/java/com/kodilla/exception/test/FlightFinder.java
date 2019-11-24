@@ -12,14 +12,14 @@ public class FlightFinder {
         myFlight.put("Moscow-Dubai", false);
     }
 
-    public void findFlight(Flight flight) throws RouteNotFoundException {
+    public boolean findFlight(Flight flight) throws RouteNotFoundException {
 
-        if (myFlight.containsKey(flight.getDepartureAirport() + "-" + flight.getArrivalAirport())
-                && myFlight.get(flight.getDepartureAirport() + "-" + flight.getArrivalAirport())) {
-            System.out.println(myFlight.get(flight.getDepartureAirport() + "-" + flight.getArrivalAirport()));
+        if (myFlight.containsKey(flight.getDepartureAirport() + "-" + flight.getArrivalAirport())) {
+            return myFlight.get(flight.getDepartureAirport() + "-" + flight.getArrivalAirport());
         } else {
-                throw new RouteNotFoundException("Something went wrong");
-            }
+            throw new RouteNotFoundException("Something went wrong");
+        }
     }
-
 }
+
+
