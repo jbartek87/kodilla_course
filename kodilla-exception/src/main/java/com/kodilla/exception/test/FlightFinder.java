@@ -15,12 +15,12 @@ public class FlightFinder {
     public boolean findFlight(Flight flight) throws RouteNotFoundException {
 
         if (myFlight.containsKey(flight.getDepartureAirport() + "-" + flight.getArrivalAirport())) {
-            System.out.println("Flight from " + flight.getArrivalAirport() + " to "
-                    + flight.getDepartureAirport() + " is available");
+            System.out.println("Flight from " + flight.getDepartureAirport() + " to "
+                    + flight.getArrivalAirport() + " is available");
             return myFlight.get(flight.getDepartureAirport() + "-" + flight.getArrivalAirport());
             } else {
-            System.out.println("Flight from " + flight.getArrivalAirport() + " to "
-                    + flight.getDepartureAirport() + " is not available !!!");
+            System.out.println("Flight from " + flight.getDepartureAirport() + " to "
+                    + flight.getArrivalAirport() + " is not available !!!");
                 throw new RouteNotFoundException("Something went wrong");
             }
 

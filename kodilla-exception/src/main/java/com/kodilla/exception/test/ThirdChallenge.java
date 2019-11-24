@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class ThirdChallenge {
     public static void main(String[] args) {
-        Flight moscowParis = new Flight("Moscow", "Paris");
+        Flight moscowParis = new Flight("Moscow", "Dubai");
         FlightFinder flightFinder = new FlightFinder(new HashMap<>());
 
         try{
