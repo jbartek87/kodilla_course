@@ -1,3 +1,5 @@
+package com.kodilla.allegro;
+
 public class OrderDto {
     public User user;
     public boolean isRented;

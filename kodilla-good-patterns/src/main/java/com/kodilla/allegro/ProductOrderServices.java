@@ -1,3 +1,5 @@
+package com.kodilla.allegro;
+
 public class ProductOrderServices implements OrderService{
 
     public boolean order(final User user, final ThingsToBuy things) {

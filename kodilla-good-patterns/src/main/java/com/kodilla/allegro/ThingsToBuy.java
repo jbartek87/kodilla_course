@@ -1,3 +1,5 @@
+package com.kodilla.allegro;
+
 public class ThingsToBuy {
 
     private String name;

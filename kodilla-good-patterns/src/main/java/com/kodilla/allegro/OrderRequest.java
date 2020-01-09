@@ -1,3 +1,5 @@
+package com.kodilla.allegro;
+
 public class OrderRequest {
     private User user;
     private ThingsToBuy things;
