@@ -9,7 +9,7 @@ public final class FlightDataBase {
         theList.add(new Flights("Warsaw", "Paris"));
         theList.add(new Flights("Warsaw", "Rome"));
         theList.add(new Flights("Poznan", "London"));
-        theList.add(new Flights("Warsaw" , "Poznan"));
+        theList.add(new Flights("Rome" , "Poznan"));
 
         return new ArrayList<Flights>(theList);
     }
