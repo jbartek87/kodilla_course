@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Scope;
 public class BoardConfig {
     @Autowired
     @Qualifier("toDoList")
-    TaskList taskList = new TaskList();
+    TaskList taskList;
     TaskList inProgressList = new TaskList();
     TaskList doneList = new TaskList();
 
