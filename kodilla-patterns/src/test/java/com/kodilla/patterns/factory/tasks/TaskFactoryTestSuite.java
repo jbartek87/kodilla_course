@@ -36,9 +36,9 @@ public class TaskFactoryTestSuite {
         System.out.println( "Driving task status: " + driving.isTaskExecuted() );
         System.out.println( "Shopping task status: " + shopping.isTaskExecuted() );
         System.out.println( "Painting task status: " + painting.isTaskExecuted() );
-        Assert.assertTrue( "true" , doDriving );
-        Assert.assertTrue( "true" , doShopping );
-        Assert.assertTrue( "true" , doPainting );
+        Assert.assertTrue( doDriving );
+        Assert.assertTrue( doShopping );
+        Assert.assertTrue( doPainting );
 
 
     }
