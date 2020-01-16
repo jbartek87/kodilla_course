@@ -1,9 +1,10 @@
 package com.kodilla.patterns.factory.tasks;
 
-public class DrivingTask {
+public class DrivingTask implements Task {
     private final String taskName;
     private final String where;
-    private final  String using;
+    private final String using;
+    boolean taskStatus = false;
 
     public DrivingTask(final String taskName ,final String where ,final String using) {
         this.taskName = taskName;
@@ -11,15 +12,19 @@ public class DrivingTask {
         this.using = using;
     }
 
+    @Override
+    public boolean executeTask() {
+        taskStatus = true;
+        return true;
+    }
+
     public String getTaskName() {
         return taskName;
     }
 
-    public String getWhere() {
-        return where;
+    @Override
+    public boolean isTaskExecuted() {
+        return taskStatus;
     }
 
-    public String getUsing() {
-        return using;
-    }
 }
