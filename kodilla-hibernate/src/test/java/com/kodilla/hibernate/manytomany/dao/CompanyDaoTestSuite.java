@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -19,6 +20,7 @@ public class CompanyDaoTestSuite {
     @Autowired
     EmployeeDao employeeDao;
 
+    @Transactional
     @Test
     public void testSaveManyToMany() {
         //Given
@@ -27,8 +29,8 @@ public class CompanyDaoTestSuite {
         Employee lindaKovalsky = new Employee( "Linda" , "Kovalsky" );
 
         Company softwareMachine = new Company( "Software Machine" );
-        Company dataMaesters = new Company( "Data Maesters" );
-        Company greyMatter = new Company( "Grey Matter" );
+        Company dataMaesters = new Company( "Big Maesters" );
+        Company greyMatter = new Company( "Big Matter" );
 
         softwareMachine.getEmployees().add( johnSmith );
         dataMaesters.getEmployees().add( stephanieClarckson );
@@ -42,6 +44,7 @@ public class CompanyDaoTestSuite {
         lindaKovalsky.getCompanies().add( dataMaesters );
         lindaKovalsky.getCompanies().add( greyMatter );
 
+
         //When
         companyDao.save( softwareMachine );
         int softwareMachineId = softwareMachine.getId();
@@ -49,25 +52,26 @@ public class CompanyDaoTestSuite {
         int dataMaestersId = dataMaesters.getId();
         companyDao.save( greyMatter );
         int greyMatterId = greyMatter.getId();
+
+
 
         //Then
         Assert.assertNotEquals( 0 , softwareMachineId );
         Assert.assertNotEquals( 0 , dataMaestersId );
         Assert.assertNotEquals( 0 , greyMatterId );
 
-
     }
 
+    @Transactional
     @Test
-    public void testRetrieveThreeChar(){
-        //Given
+    public void testRetreiveCompanyByThreeChar() {
         Employee johnSmith = new Employee( "John" , "Smith" );
         Employee stephanieClarckson = new Employee( "Stephanie" , "Clarckson" );
         Employee lindaKovalsky = new Employee( "Linda" , "Kovalsky" );
 
         Company softwareMachine = new Company( "Software Machine" );
-        Company dataMaesters = new Company( "Data Maesters" );
-        Company greyMatter = new Company( "Grey Matter" );
+        Company dataMaesters = new Company( "Big Maesters" );
+        Company greyMatter = new Company( "Big Matter" );
 
         softwareMachine.getEmployees().add( johnSmith );
         dataMaesters.getEmployees().add( stephanieClarckson );
@@ -89,22 +93,21 @@ public class CompanyDaoTestSuite {
         int greyMatterId = greyMatter.getId();
 
         //When
-        List<Company> tempList = companyDao.retrieveCompanyByThreeChar( "Gre" );
-
+        List<Company> threeList = companyDao.retrieveCompanyByThreeChar( "Sof" );
         //Then
-        Assert.assertEquals( 1, tempList.size() );
+        Assert.assertEquals( 1 , threeList.size() );
     }
 
+    @Transactional
     @Test
-    public void testRetrieveEmployeeLastName(){
-        //Given
-        Employee johnSmith = new Employee( "John" , "Kowalski" );
-        Employee stephanieClarckson = new Employee( "Stephanie" , "Kowalski" );
+    public void testRetreiveEmployeeLastName() {
+        Employee johnSmith = new Employee( "John" , "Smith" );
+        Employee stephanieClarckson = new Employee( "Stephanie" , "Smith" );
         Employee lindaKovalsky = new Employee( "Linda" , "Kovalsky" );
 
         Company softwareMachine = new Company( "Software Machine" );
-        Company dataMaesters = new Company( "Data Maesters" );
-        Company greyMatter = new Company( "Grey Matter" );
+        Company dataMaesters = new Company( "Big Maesters" );
+        Company greyMatter = new Company( "Big Matter" );
 
         softwareMachine.getEmployees().add( johnSmith );
         dataMaesters.getEmployees().add( stephanieClarckson );
@@ -126,11 +129,9 @@ public class CompanyDaoTestSuite {
         int greyMatterId = greyMatter.getId();
 
         //When
-        List<Employee> tempList = employeeDao.retrieveEmployeeLastName( "Kowalski" );
-
+        List<Employee> lastNameList = employeeDao.retrieveEmployeeLastName( "Smith" );
         //Then
-        Assert.assertEquals( 2, tempList.size() );
+        Assert.assertEquals( 2 , lastNameList.size() );
     }
-
 
 }
