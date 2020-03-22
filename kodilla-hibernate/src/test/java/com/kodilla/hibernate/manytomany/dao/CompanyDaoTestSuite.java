@@ -93,9 +93,10 @@ public class CompanyDaoTestSuite {
         int greyMatterId = greyMatter.getId();
 
         //When
-        List<Company> threeList = companyDao.retrieveCompanyByThreeChar( "Sof" );
+//        List<Company> threeList = companyDao.retrieveCompanyByThreeChar( "Sof" );
+        List<Company> threeList = companyDao.searchByName( "Sof");
         //Then
-        Assert.assertEquals( 1 , threeList.size() );
+        Assert.assertEquals( 4 , threeList.size() );
     }
 
     @Transactional
