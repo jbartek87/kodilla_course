@@ -14,8 +14,6 @@ import java.util.List;
 
 @Service
 public class SearchFascade {
-    List<Company> listOfmatchedCompanies;
-    List<Employee> listOfmatchedEmployees;
 
     @Autowired
     CompanyDao companyDao;
@@ -25,19 +23,18 @@ public class SearchFascade {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SearchFascade.class);
 
-    public List<Company> searchCompanyByName(String name)throws SearchProcessingException{
-        listOfmatchedCompanies = companyDao.searchByName(name);
+    public void searchCompanyByName(String name)throws SearchProcessingException{
+
+        List<Company> listOfmatchedCompanies = companyDao.searchByName(name);
         if(listOfmatchedCompanies.size()==0){
             LOGGER.error(SearchProcessingException.ERR_COMPANY);
         }
-        return listOfmatchedCompanies;
     }
 
-    public List<Employee> searchEmployeeLastName(String lastName) throws SearchProcessingException{
-        listOfmatchedEmployees = employeeDao.retrieveEmployeeLastName(lastName);
+    public void searchEmployeeLastName(String lastName) throws SearchProcessingException{
+        List<Employee> listOfmatchedEmployees = employeeDao.retrieveEmployeeLastName(lastName);
         if(listOfmatchedEmployees.size()==0){
             LOGGER.error(SearchProcessingException.ERR_EMPLOYEE);
         }
-        return listOfmatchedEmployees;
     }
 }
