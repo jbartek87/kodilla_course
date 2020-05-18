@@ -18,29 +18,29 @@ public class CrudAppTestSuite {
     private Random generator;
 
     @Before
-    public void initTests(){
+    public void initTests() {
         driver = WebDriverConfig.getDriver(WebDriverConfig.CHROME);
         driver.get(BASE_URL);
-        generator=new Random();
+        generator = new Random();
     }
 
     @After
-    public void cleanUpAfterTest(){
+    public void cleanUpAfterTest() {
         driver.close();
     }
 
 
-    public String createCrudAppTestTask() throws InterruptedException{
+    public String createCrudAppTestTask() throws InterruptedException {
         final String XPATH_TASK_NAME = "//form[contains(@action,\"createTask\")]/fieldset[1]/input";
         final String XPATH_TASK_CONTENT = "//form[contains(@action,\"createTask\")]/fieldset[2]/textarea";
-        final String XPATH_ADD_BUTOON="//form[contains(@action,\"createTask\")]/fieldset[3]/button";
+        final String XPATH_ADD_BUTOON = "//form[contains(@action,\"createTask\")]/fieldset[3]/button";
         String taskName = "Task number + " + generator.nextInt(10000);
         String taskContent = taskName + " content";
 
         WebElement name = driver.findElement(By.xpath(XPATH_TASK_NAME));
         name.sendKeys(taskName);
 
-        WebElement content= driver.findElement(By.xpath(XPATH_TASK_CONTENT));
+        WebElement content = driver.findElement(By.xpath(XPATH_TASK_CONTENT));
         content.sendKeys(taskContent);
 
         WebElement addButton = driver.findElement(By.xpath(XPATH_ADD_BUTOON));
@@ -87,7 +87,7 @@ public class CrudAppTestSuite {
         Thread.sleep(4000);
 
         driverTrello.findElements(By.xpath("//a[@class=\"board-tile\"]")).stream()
-                .filter(aHref -> aHref.findElements(By.xpath(".//div[@title=\"Kodilla Application\"]")).size()>0)
+                .filter(aHref -> aHref.findElements(By.xpath(".//div[@title=\"Kodilla Application\"]")).size() > 0)
                 .forEach(WebElement::click);
 
         Thread.sleep(4000);
@@ -120,9 +120,9 @@ public class CrudAppTestSuite {
         String taskName = createCrudAppTestTask();
 //        sendTestTaskToTrello(taskName);
 //        Assert.assertTrue(checkTaskExistsInTrello(taskName));
+
         removeTaskFromTaskCrud(taskName);
     }
-
 
 
 }
